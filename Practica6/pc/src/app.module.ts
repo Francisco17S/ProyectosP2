@@ -21,6 +21,7 @@ import { Prestamo } from './prestamo/entities/prestamo.entity';
       entities: [Prestamista, Computadora, Prestamo],
       synchronize: true,
     }),
+    
     PrestamistaModule,
     ComputadoraModule,
     PrestamoModule,

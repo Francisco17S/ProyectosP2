@@ -1,0 +1,104 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Prestamista {
+  idprestamista: Int!
+  nombre: String!
+  identificacion: String!
+  estado: String!
+  prestamos: [Prestamo!]!
+}
+
+type Prestamo {
+  idprestamo: Int!
+  computadora: Computadora!
+  prestamista: Prestamista!
+  fecha: String!
+  hora: String!
+  numeroHorasPrestamo: Int!
+  estado: String!
+}
+
+type Computadora {
+  idcomputadora: Int!
+  descripcion: String!
+  detallestecnicos: String!
+  costoporhoraprestamo: Float!
+  estado: String!
+  prestamos: [Prestamo!]!
+}
+
+type Query {
+  computadoras(estado: String): [Computadora!]!
+  computadora(id: ID!): Computadora!
+  computadorasByEstado(estado: String!): [Computadora!]!
+  prestamistas(estado: String): [Prestamista!]!
+  prestamista(id: ID!): Prestamista!
+  prestamistasByEstado(estado: String!): [Prestamista!]!
+  prestamos(estado: String): [Prestamo!]!
+  prestamo(id: ID!): Prestamo!
+  prestamosByEstado(estado: String!): [Prestamo!]!
+}
+
+type Mutation {
+  createActiveComputadora(createComputadoraInput: CreateComputadoraInput!): Computadora!
+  createInactiveComputadora(createComputadoraInput: CreateComputadoraInput!): Computadora!
+  updateComputadora(updateComputadoraInput: UpdateComputadoraInput!): Computadora!
+  removeComputadora(id: ID!): Computadora!
+  createActivePrestamista(createPrestamistaInput: CreatePrestamistaInput!): Prestamista!
+  createInactivePrestamista(createPrestamistaInput: CreatePrestamistaInput!): Prestamista!
+  updatePrestamista(updatePrestamistaInput: UpdatePrestamistaInput!): Prestamista!
+  removePrestamista(id: ID!): Prestamista!
+  createActivePrestamo(createPrestamoInput: CreatePrestamoInput!): Prestamo!
+  createInactivePrestamo(createPrestamoInput: CreatePrestamoInput!): Prestamo!
+  updatePrestamo(updatePrestamoInput: UpdatePrestamoInput!): Prestamo!
+  removePrestamo(id: ID!): Prestamo!
+}
+
+input CreateComputadoraInput {
+  descripcion: String!
+  detallestecnicos: String!
+  costoporhoraprestamo: Float!
+  estado: String
+}
+
+input UpdateComputadoraInput {
+  descripcion: String
+  detallestecnicos: String
+  costoporhoraprestamo: Float
+  estado: String
+  idcomputadora: ID!
+}
+
+input CreatePrestamistaInput {
+  nombre: String!
+  identificacion: String!
+  estado: String
+}
+
+input UpdatePrestamistaInput {
+  nombre: String
+  identificacion: String
+  estado: String
+  idprestamista: ID!
+}
+
+input CreatePrestamoInput {
+  computadora_idcomputadora: Int!
+  prestamista_idprestamista: Int!
+  fecha: String!
+  hora: String!
+  numeroHorasPrestamo: Int!
+  estado: String
+}
+
+input UpdatePrestamoInput {
+  computadora_idcomputadora: Int
+  prestamista_idprestamista: Int
+  fecha: String
+  hora: String
+  numeroHorasPrestamo: Int
+  estado: String
+  idprestamo: ID!
+}
