@@ -1,0 +1,51 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Candidato {
+  id: Int!
+  codigo: String!
+  dignidad: String!
+  participantes: String!
+  tipo_medio: String!
+  numero_de_personas_que_votaron: Float!
+  fecha_de_conteo_de_votos: String!
+  empresa: String!
+  estado: String!
+}
+
+type Query {
+  candidatosByCodigo(codigo: String!): [Candidato!]!
+  candidatos(estado: String): [Candidato!]!
+  candidato(id: ID!): Candidato!
+  candidatosByNumeroDePersonasQueVotaron(minNumeroDePersonasQueVotaron: Float!): [Candidato!]!
+}
+
+type Mutation {
+  createActiveCandidato(createCandidatoDto: CreateCandidatoDto!): Candidato!
+  updateCandidato(updateCandidatoDto: UpdateCandidatoDto!): Candidato!
+  removeCandidato(id: ID!): Boolean!
+}
+
+input CreateCandidatoDto {
+  codigo: String!
+  dignidad: String!
+  participantes: String!
+  tipo_medio: String!
+  numero_de_personas_que_votaron: Float!
+  fecha_de_conteo_de_votos: String!
+  empresa: String!
+  estado: String!
+}
+
+input UpdateCandidatoDto {
+  id: ID!
+  codigo: String!
+  dignidad: String!
+  participantes: String!
+  tipo_medio: String!
+  numero_de_personas_que_votaron: Float!
+  fecha_de_conteo_de_votos: String!
+  empresa: String!
+  estado: String!
+}
